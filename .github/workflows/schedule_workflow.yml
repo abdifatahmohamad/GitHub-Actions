@@ -1,0 +1,17 @@
+name: Schedule Workflow Demo
+
+on: 
+  # Schedule workflow every 5 minutes
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  run-scheduled-task:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run scheduled task
+        run: |
+          echo "This is a scheduled task running every 5 minutes."
