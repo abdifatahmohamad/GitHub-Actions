@@ -6,10 +6,8 @@ on:
       test_suite:
         description: 'Test suite to run'
         type: choice
-        default: functional
         options:
           - functional
-          - regression
 
 jobs:
   run-tests:
