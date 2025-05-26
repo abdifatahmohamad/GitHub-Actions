@@ -1,0 +1,17 @@
+name: Workflow Demo
+
+on:
+    push:
+
+jobs:
+    example_job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Run a simple command
+              run: echo "Hello, World!"
+
+            - name: Run a Python script
+              run: python -c "print('This is a Python script running in the workflow!')"
