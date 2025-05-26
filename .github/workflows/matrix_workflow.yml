@@ -1,0 +1,20 @@
+name: Matrix Configuration Workflow
+
+on: push
+
+jobs:
+  matrix_job:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        color: [green, pink]
+        animal: [owl, magpie]
+        include:
+          - color: green
+            animal: owl
+          - color: pink
+            animal: magpie
+
+    steps:
+      - name: Echo matrix values
+        run: echo "Color is ${{ matrix.color }}, Animal is ${{ matrix.animal }}"
