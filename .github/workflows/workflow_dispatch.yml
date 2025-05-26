@@ -1,0 +1,19 @@
+name: Workflow Dispatch Demo
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_suite:
+        description: 'Test suite to run'
+        type: choice
+        default: functional
+        options:
+          - functional
+          - regression
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print selected test suite
+        run: echo "Running the ${{ github.event.inputs.test_suite }} test suite"
