@@ -1,17 +1,20 @@
-name: Schedule Workflow Demo
+name: Run Every 5 Minutes
 
-on: 
-  # Schedule workflow every 5 minutes
+on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/5 * * * *'  # Runs every 5 minutes
+  workflow_dispatch:       # Allows manual trigger
 
 jobs:
-  run-scheduled-task:
+  scheduled-job:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Run scheduled task
+      - name: Print scheduled message
         run: |
-          echo "This is a scheduled task running every 5 minutes."
+          echo "⏰ This workflow runs every 5 minutes."
+          date
+
