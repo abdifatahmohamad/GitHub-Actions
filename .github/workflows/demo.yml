@@ -1,0 +1,13 @@
+name: Minimal Output Demo
+
+on: push
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    outputs:
+      foo: ${{ steps.set-output.outputs.foo }}
+    steps:
+      - id: set-output
+        run: echo "foo=hello" >> $GITHUB_OUTPUT
+
