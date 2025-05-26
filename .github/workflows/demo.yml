@@ -8,6 +8,9 @@ jobs:
     outputs:
       foo: ${{ steps.set-output.outputs.foo }}
     steps:
-      - id: set-output
+      - name: Set output
+        id: set-output
         run: echo "foo=hello" >> $GITHUB_OUTPUT
+
+
 
