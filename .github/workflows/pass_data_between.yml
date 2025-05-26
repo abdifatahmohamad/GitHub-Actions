@@ -1,0 +1,21 @@
+name: Pass Data Between Jobs
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      result: ${{ steps.example.outputs.foo }}
+    steps:
+      - id: example
+        run: echo "foo=bar" >> $GITHUB_OUTPUT
+
+  deploy:
+    needs: build  # You can set outputs in one job and use them in another via needs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show output
+        run: |
+          echo "Output: ${{ needs.build.outputs.result }}"
+
